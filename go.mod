@@ -1,4 +1,4 @@
-module github.com/dewey/cronjobs
+module github.com/db-journey/cronjobs
 
 go 1.12
 
