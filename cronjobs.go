@@ -26,6 +26,7 @@ type scheduler struct {
 	Logger func(chan *Run) // This function will just output a simple status on stdout, and can be overwritten
 }
 
+// New creates a new cron scheduler
 func New(driver driver.Driver) *scheduler {
 	return &scheduler{
 		cron.New(),
@@ -35,7 +36,7 @@ func New(driver driver.Driver) *scheduler {
 	}
 }
 
-// Each job scheduled will create a Run entry for logging
+// Run defines an entry that will be created from each job for logging
 type Run struct {
 	Name     string
 	Error    error
@@ -46,7 +47,7 @@ var cronRE = regexp.MustCompile(`^.*cron:\s+(.*)\n`)
 
 // ReadFiles will scan files and return a list of Jobs
 // the driver is attached to each Job to implement the cron.Job interface
-func (scheduler *scheduler) ReadFiles(dirname string) error {
+func (s *scheduler) ReadFiles(dirname string) error {
 
 	// find all cronjobs files in path.
 	ioFiles, err := ioutil.ReadDir(dirname)
@@ -71,14 +72,14 @@ func (scheduler *scheduler) ReadFiles(dirname string) error {
 
 		runFunc := func() {
 			start := time.Now()
-			err := scheduler.driver.Execute(content)
-			scheduler.runs <- &Run{
+			err := s.driver.Execute(content)
+			s.runs <- &Run{
 				Name:     jobName,
 				Error:    err,
 				Duration: time.Since(start),
 			}
 		}
-		if _, err := scheduler.AddFunc(spec, runFunc); err != nil {
+		if err := s.AddFunc(spec, runFunc); err != nil {
 			return fmt.Errorf(`File %s: %s`, fPath, err)
 		}
 	}
@@ -86,11 +87,13 @@ func (scheduler *scheduler) ReadFiles(dirname string) error {
 	return nil
 }
 
+// Start will start the cron jobs
 func (s *scheduler) Start() {
 	go s.Logger(s.runs)
 	s.Cron.Start()
 }
 
+// Stop stops the cron jobs
 func (s *scheduler) Stop() {
 	s.Cron.Stop()
 	close(s.runs)
