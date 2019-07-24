@@ -1,0 +1,4 @@
+github.com/db-journey/migrate v2.0.0+incompatible h1:heh263YgHne8Fp+XvgDf427MjfB4jV1W19O+7vqU3pU=
+github.com/db-journey/migrate v2.0.0+incompatible/go.mod h1:mJTA43EQJ94pqUpLXH0qsTgn7OnO56iLy2q5ywaYUy4=
+github.com/robfig/cron/v3 v3.0.0 h1:kQ6Cb7aHOHTSzNVNEhmp8EcWKLb4CbiMW9h9VyIhO4E=
+github.com/robfig/cron/v3 v3.0.0/go.mod h1:eQICP3HwyT7UooqI/z+Ov+PtYAWygg1TEWWzGIFLtro=
