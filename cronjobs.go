@@ -16,7 +16,7 @@ import (
 	"time"
 
 	"github.com/db-journey/migrate/driver"
-	"github.com/robfig/cron"
+	"github.com/robfig/cron/v3"
 )
 
 type scheduler struct {
