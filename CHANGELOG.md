@@ -1,5 +1,9 @@
 # CronJobs Changelog
 
+## v1.0.4 - 2019-07-29
+
+* Add pinned version of robfig to import (#5)
+
 ## v1.0.3 - 2019-07-24
 
 * Pin version to v3 of robfig’s cron (#2)
