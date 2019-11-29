@@ -1,5 +1,9 @@
 # CronJobs Changelog
 
+## v1.0.5 - 2019-11-29
+
+- Update dependencies
+
 ## v1.0.4 - 2019-07-29
 
 * Add pinned version of robfig to import (#5)

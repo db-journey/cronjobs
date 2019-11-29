@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/db-journey/migrate/driver"
+	"github.com/db-journey/migrate/v2/driver"
 	"github.com/robfig/cron/v3"
 )
 
