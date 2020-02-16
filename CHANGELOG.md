@@ -1,5 +1,9 @@
 # CronJobs Changelog
 
+## v1.0.6 - 2020-02-16
+
+- update dependencies
+
 ## v1.0.5 - 2019-11-29
 
 - Update dependencies
